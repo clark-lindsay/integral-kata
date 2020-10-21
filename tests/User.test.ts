@@ -5,7 +5,11 @@ describe("the Publishing feature", () => {
     const alice = new User({ name: "Alice" });
     alice.publishPost("I love the weather today.");
 
-    expect(alice.getTimeline()[0].content).toEqual("I love the weather today.");
+    expect(alice.getTimeline()).toContainEqual({
+      content: "I love the weather today.",
+      datePublished: expect.any(Date),
+      author: alice,
+    });
   });
 });
 
