@@ -19,8 +19,16 @@ describe("the Timeline feature", () => {
     bob.publishPost("Darn! We lost!");
     bob.publishPost("Good game though.");
 
-    expect(bob.getTimeline()[0].content).toEqual("Good game though.");
-    expect(bob.getTimeline()[1].content).toEqual("Darn! We lost!");
+    expect(bob.getTimeline()[0]).toEqual({
+      content: "Good game though.",
+      datePublished: expect.any(Date),
+      author: bob,
+    });
+    expect(bob.getTimeline()[1]).toEqual({
+      content: "Darn! We lost!",
+      datePublished: expect.any(Date),
+      author: bob,
+    });
 
     const timeOfFirstPost = bob.getTimeline()[1].datePublished.valueOf();
     const timeOfSecondPost = bob.getTimeline()[0].datePublished.valueOf();
@@ -53,19 +61,29 @@ describe("the Following feature", () => {
 
       const charlieWall = charlie.getWall();
 
-      expect(charlieWall[0].content).toEqual(
-        "I'm in New York today! Anyone want to have a coffee?"
-      );
-      expect(charlieWall[0].author.name).toEqual("Charlie");
+      expect(charlieWall[0]).toEqual({
+        content: "I'm in New York today! Anyone want to have a coffee?",
+        datePublished: expect.any(Date),
+        author: charlie,
+      });
 
-      expect(charlieWall[1].content).toEqual("Good game though.");
-      expect(charlieWall[1].author.name).toEqual("Bob");
+      expect(charlieWall[1]).toEqual({
+        content: "Good game though.",
+        datePublished: expect.any(Date),
+        author: bob,
+      });
 
-      expect(charlieWall[2].content).toEqual("Darn! We lost!");
-      expect(charlieWall[2].author.name).toEqual("Bob");
+      expect(charlieWall[2]).toEqual({
+        content: "Darn! We lost!",
+        datePublished: expect.any(Date),
+        author: bob,
+      });
 
-      expect(charlieWall[3].content).toEqual("I love the weather today.");
-      expect(charlieWall[3].author.name).toEqual("Alice");
+      expect(charlieWall[3]).toEqual({
+        content: "I love the weather today.",
+        datePublished: expect.any(Date),
+        author: alice,
+      });
     });
   });
 });
