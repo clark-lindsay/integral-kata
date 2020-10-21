@@ -5,9 +5,13 @@
   "author": "clark-lindsay <clarklindsay96@gmail.com>",
   "license": "MIT",
   "private": false,
+	"scripts": {
+		"test": "jest"
+	},
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-typescript": "^7.12.1",
+    "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.0",
     "eslint": "^7.11.0",
