@@ -16,7 +16,7 @@ export class User {
   }
 
   getTimeline(): Post[] {
-    return this.timeline;
+    return [...this.timeline].reverse();
   }
 }
 
